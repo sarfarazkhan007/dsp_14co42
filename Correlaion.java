@@ -1,4 +1,12 @@
-import java.util.*; 
+import java.util.*;
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.Collections;
+// import java.util.List;
+
+
+// Read more: http://www.java67.com/2016/10/3-ways-to-reverse-array-in-java-coding-interview-question.html#ixzz4tL37WvjR
+
 
 class CircularMatrix
 {
@@ -8,6 +16,7 @@ class CircularMatrix
 		int[] x = new int[15];  //array for valuecof x(n)
 		int[] h = new int[15];	//array for valuecof h(n)
 		int[] y = new int[15];	//array for valuecof y(n)
+		int[] z = new int[15];
 		int i=0; //no of x samples counter i.e length
 		int j=0; //no of h samples counter i.e length
 		int count=0; //counter to maintain circular matrix same as i 
@@ -27,8 +36,14 @@ class CircularMatrix
 		System.out.println();
 		for(String w:xsample.split("\\s")) //spliting according to space
 		{  
-			x[i++]=Integer.parseInt(w); // after spliting covert val of x(n) into integer array
+			h[j++]=Integer.parseInt(w); // after spliting covert val of x(n) into integer array
 		}
+
+		
+		
+		//System.out.println();
+		//System.out.print(Collections.reverse(Arrays.asList(x)));
+
 	
 		System.out.print("Enter all samples leaving space of h(n): ");
 		String hsample=sc.nextLine();//taking value of h(n) as a string
@@ -36,7 +51,14 @@ class CircularMatrix
 		System.out.println();
 		for(String w:hsample.split("\\s"))//spliting according to space 
 		{  
-			h[j++]=Integer.parseInt(w); //after spliting covert val of h(n) into integer array
+			x[i++]=Integer.parseInt(w); //after spliting covert val of h(n) into integer array
+		}
+
+		for (int tempi = 0; tempi < i/2; tempi++) 
+		{
+ 			int tempnew = x[tempi];
+ 			x[tempi] = x[i - 1 - tempi];
+  			x[i - 1 - tempi] = tempnew;
 		} 
 
 		int padd = i+j-1;
@@ -126,9 +148,5 @@ class CircularMatrix
 		System.out.println();
 	}
 	
-	//static circleMatrix()
-	//{
-		
-	//}
 
 }
